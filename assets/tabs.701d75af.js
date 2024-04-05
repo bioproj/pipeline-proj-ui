@@ -1,0 +1,1 @@
+import{M as e}from"./index.03f3394d.js";import{j as a}from"./vendor.13398e09.js";const s=[{label:"Tab-1",value:1},{label:"Tab-2",value:2}],l=()=>a("div",{children:a(e,{options:s})});export{l as default};
