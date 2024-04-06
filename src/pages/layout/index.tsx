@@ -3,7 +3,7 @@ import type { FC } from 'react';
 
 import './index.less';
 
-import { Drawer, Layout, theme as antTheme } from 'antd';
+import { Drawer, Layout, theme as antTheme, Spin } from 'antd';
 import { Suspense, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, useLocation } from 'react-router';
@@ -17,6 +17,7 @@ import { useGuide } from '../guide/useGuide';
 import HeaderComponent from './header';
 import MenuComponent from './menu';
 import TagsView from './tagView';
+import { LocaleFormatter, localeConfig } from '@/locales';
 
 const { Sider, Content } = Layout;
 const WIDTH = 992;
@@ -28,6 +29,7 @@ const LayoutPage: FC = () => {
   const [menuList, setMenuList] = useState<MenuList>([]);
   const { device, collapsed, newUser } = useSelector(state => state.user);
   const token = antTheme.useToken();
+  const { theme, loading } = useSelector(state => state.global);
 
   const isMobile = device === 'MOBILE';
   const dispatch = useDispatch();
@@ -67,7 +69,7 @@ const LayoutPage: FC = () => {
   const fetchMenuList = useCallback(async () => {
     const { code, data } = await getMenuList();
 
-    if (code==200) {
+    if (code == 200) {
       setMenuList(data);
       dispatch(
         setUserItem({
@@ -142,9 +144,21 @@ const LayoutPage: FC = () => {
         )}
         <Content className="layout-page-content">
           <TagsView />
-          <Suspense fallback={null}>
-            <Outlet />
-          </Suspense>
+          <Spin
+            spinning={loading}
+            className="app-loading-wrapper"
+            style={{
+              backgroundColor: theme === 'dark' ? 'rgba(0, 0, 0, 0.44)' : 'rgba(255, 255, 255, 0.44)',
+              height: "100%"
+            }}
+            tip={<LocaleFormatter id="gloabal.tips.loading" />}
+
+          >
+            <Suspense fallback={null}>
+              <Outlet />
+            </Suspense>
+          </Spin>
+
         </Content>
       </Layout>
     </Layout>

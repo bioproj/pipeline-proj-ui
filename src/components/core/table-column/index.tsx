@@ -2,7 +2,7 @@ import type { MyTableColumnProps } from './type';
 
 import { Table } from 'antd';
 import dayjs from 'dayjs';
-import { getPathValue } from 'rc-table/lib/utils/valueUtil';
+// import { getPathValue } from 'rc-table/lib/utils/valueUtil';
 
 import { dateFormatMap, datetimeFormatMap, timeFormatMap } from './type';
 
@@ -19,14 +19,14 @@ const MyTableColumn = <RecordType extends object = object>(props: MyTableColumnP
     } else if ('time' in props) {
       return dayjs(value, timeFormatMap[typeof time === 'string' ? time : 'second']);
     }
+    //TUDO
+    // const dataIndex = props.dataIndex;
 
-    const dataIndex = props.dataIndex;
+    // if (dataIndex && options) {
+    //   const data = options.find(item => item.value === getPathValue(record, dataIndex));
 
-    if (dataIndex && options) {
-      const data = options.find(item => item.value === getPathValue(record, dataIndex));
-
-      if (data) return data.label || '-';
-    }
+    //   if (data) return data.label || '-';
+    // }
   };
 
   return <Table.Column {...rest} key={props.dataIndex?.toString()} render={render || renderContent} />;

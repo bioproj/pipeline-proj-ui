@@ -22,7 +22,7 @@ const App: React.FC = () => {
   const setTheme = (light = true) => {
     dispatch(
       setGlobalState({
-        theme: light ?  'light':'dark' ,
+        theme: light ? 'light' : 'dark',
       }),
     );
   };
@@ -78,14 +78,7 @@ const App: React.FC = () => {
       <IntlProvider locale={locale.split('_')[0]} messages={localeConfig[locale]}>
         <HistoryRouter history={history}>
           <Suspense fallback={null}>
-            <Spin
-              spinning={loading}
-              className="app-loading-wrapper"
-              style={{
-                backgroundColor: theme === 'dark' ? 'rgba(0, 0, 0, 0.44)' : 'rgba(255, 255, 255, 0.44)',
-              }}
-              tip={<LocaleFormatter id="gloabal.tips.loading" />}
-            ></Spin>
+  
             <RenderRouter />
           </Suspense>
         </HistoryRouter>

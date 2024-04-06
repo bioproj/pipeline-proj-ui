@@ -6,7 +6,9 @@ import { Navigate } from 'react-router';
 import { useRoutes } from 'react-router-dom';
 
 import Dashboard from '@/pages/dashboard';
+// 布局切换
 import LayoutPage from '@/pages/layout';
+// import LayoutPage from '@/pages/procomponentsLayout/antLayout';
 import LoginPage from '@/pages/login';
 
 import WrapperRouteComponent from './config';
