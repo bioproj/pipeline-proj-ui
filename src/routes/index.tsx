@@ -28,6 +28,10 @@ const BusinessWithSearchPage = lazy(() => import(/* webpackChunkName: "with-sear
 const BusinessWithAsidePage = lazy(() => import(/* webpackChunkName: "with-aside" */ '@/pages/business/with-aside'));
 
 const WorkflowPage = lazy(() => import(/* webpackChunkName: "workflow" */ '@/pages/application/workflow'));
+const WorkflowDetail = lazy(() => import(/* webpackChunkName: "workflowDetail" */ '@/pages/application/workflow/detail'));
+
+
+const Workflow0Page = lazy(() => import(/* webpackChunkName: "workflow0" */ '@/pages/application/workflow/index0'));
 
 const BusinessWithRadioCardsPage = lazy(
   () => import(/* webpackChunkName: "with-aside" */ '@/pages/business/with-radio-cards'),
@@ -53,10 +57,13 @@ const routeList: RouteObject[] = [
       },  {
         path: 'workflow',
         element: <WrapperRouteComponent element={<WorkflowPage />} titleId="title.workflow" />,
+      },{
+        path: 'workflow/detail',
+        element: <WrapperRouteComponent element={<WorkflowDetail />} titleId="title.workflow" />,
       },
       {
         path: 'documentation',
-        element: <WrapperRouteComponent element={<Documentation />} titleId="title.documentation" />,
+        element: <WrapperRouteComponent element={<Workflow0Page />} titleId="title.documentation" />,
       },
       {
         path: 'guide',

@@ -37,9 +37,21 @@ const LayoutPage: FC = () => {
 
   useEffect(() => {
     const code = getFirstPathCode(location.pathname);
-
     setOpenkey(code);
     setSelectedKey(location.pathname);
+
+
+    if (location.search != "") {
+      // debugger
+      const pathList = location.pathname.split("/")
+      if (pathList.length > 2) {
+        setSelectedKey("/"+pathList[1])
+      }
+      // console.log(location.pathname)
+      // setSelectedKey("/workflow");
+    }
+
+
   }, [location.pathname]);
 
   const toggle = () => {

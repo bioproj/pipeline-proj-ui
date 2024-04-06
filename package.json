@@ -20,7 +20,8 @@
     "react-intl": "^5.23.0",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.0.0",
-    "recharts": "^2.1.13"
+    "recharts": "^2.1.13",
+    "umi-request": "^1.4.0"
   },
   "scripts": {
     "dev": "vite",
